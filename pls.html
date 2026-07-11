@@ -56,10 +56,10 @@
         subtext: "Nama pesina convo full-a loop la replay pannitu irukken, oruye oru place la dhan land aaguren — na thappu pannitten, unaku athuku better treatment thevai irundhuchu. Konjam scroll pannu, unaku oru surprise vechirukken.",
       },
       memories: [
-        { title: "ethu ne ennaku muthala kudutha chocolate", caption: "etha na yarukum kudukama nane saptan dii.",<img src: "cho.jpg"/> },
-        { title: "ethu namba first msg pannapo", caption: "ethula la na unna vanga poonganu tha sollitu iruntha dii.",<img src: "msg.png"/>},
-        { title: "ethu namba first photo", caption: "nee tha ella photo layum alazha thanu iruka natha sumaru.",<img src: "photo.png"/> },
-        { title: "ethu na unnaku first msg la padunathu", caption: "nalla irukuma nu theriyama tha unnaku paduna cheloe.",<img src: "patu.mp4"/> },
+        { title: "ethu ne ennaku muthala kudutha chocolate", caption: "etha na yarukum kudukama nane saptan dii.", image: "cho.jpg", type: "image" },
+        { title: "ethu namba first msg pannapo", caption: "ethula la na unna vanga poonganu tha sollitu iruntha dii.", image: "msg.png", type: "image" },
+        { title: "ethu namba first photo", caption: "nee tha ella photo layum alazha thanu iruka natha sumaru.", image: "photo.png", type: "image" },
+        { title: "ethu na unnaku first msg la padunathu", caption: "nalla irukuma nu theriyama tha unnaku paduna cheloe.", image: "patu.mp4", type: "video" },
       ],
       reasons:[
         { title: "Unoda andha sirippu dii", detail: "Enna thaan prachana irundhalum, un sirippa ketta podhum... en ulagam motham silent aypoga, adhu mattum thaan ketkume." },
@@ -119,12 +119,22 @@
 
     function MemoryCard({ memory }) {
       return (
-        <div className="snap-center shrink-0 w-[75vw] sm:w-80 mx-2 bg-white/40 border border-white/60 backdrop-blur-md rounded-2xl shadow-sm p-4">
-          <div className="h-44 bg-gradient-to-br from-rose-200 to-amber-100 rounded-xl flex items-center justify-center mb-4">
-            <Icon name="camera" className="w-8 h-8 text-rose-400/60" />
+        <div className="snap-center shrink-0 w-[75vw] sm:w-80 mx-2 bg-white/40 border border-white/60 backdrop-blur-md rounded-2xl shadow-sm p-4 flex flex-col justify-between">
+          <div className="h-44 bg-gradient-to-br from-rose-100 to-amber-50 rounded-xl flex items-center justify-center mb-4 overflow-hidden relative border border-rose-100/50">
+            {memory.image ? (
+              memory.type === "video" ? (
+                <video src={memory.image} controls className="w-full h-full object-cover" />
+              ) : (
+                <img src={memory.image} alt={memory.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
+              )
+            ) : (
+              <Icon name="camera" className="w-8 h-8 text-rose-400/60" />
+            )}
           </div>
-          <h3 className="text-base text-rose-950 font-medium font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{memory.title}</h3>
-          <p className="mt-1 text-xs text-rose-900/70 leading-relaxed">{memory.caption}</p>
+          <div>
+            <h3 className="text-base text-rose-950 font-medium font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{memory.title}</h3>
+            <p className="mt-1 text-xs text-rose-900/70 leading-relaxed">{memory.caption}</p>
+          </div>
         </div>
       );
     }
@@ -212,7 +222,7 @@
       return (
         <Section eyebrow="oru kelvi" title="Enna Forgive Pannuviya?">
           <div ref={containerRef} className="relative h-48 bg-white/40 border border-white/60 backdrop-blur-md rounded-2xl flex items-center justify-center gap-4 overflow-hidden shadow-sm">
-            <button onClick={() => setAccepted(true)} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-medium shadow-md animate-[breathe_2.5s_infinite]">Aama, manasari manichitten 💗</button>
+            <button onClick={() => setAccepted(true)} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-50 to-pink-500 text-white text-xs font-medium shadow-md animate-[breathe_2.5s_infinite]">Aama, manasari manichitten 💗</button>
             <button onMouseEnter={dodge} onClick={dodge} style={{ transform: `translate(${noPos.x}px, ${noPos.y}px)` }} className="px-4 py-2.5 rounded-full bg-white/80 border border-rose-200 text-rose-500 text-xs font-medium shadow transition-transform duration-200 ease-out whitespace-nowrap">{noLabel}</button>
           </div>
           {accepted && (
