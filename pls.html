@@ -3,85 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorry da Meera</title>
-  
-  <!-- Fonts -->
+  <title>Sorry da Udhaya</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
-  <!-- React & Babel CDNs -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     * { font-family: 'Poppins', sans-serif; }
     @keyframes floatUp {
       0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-      10% { opacity: var(--o, 0.3); }
+      10% { opacity: 0.3; }
       50% { transform: translateY(-55vh) translateX(20px) rotate(15deg); }
-      90% { opacity: var(--o, 0.3); }
       100% { transform: translateY(-110vh) translateX(-15px) rotate(-10deg); opacity: 0; }
     }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.1; transform: scale(0.8); }
-      50% { opacity: 0.9; transform: scale(1.3); }
-    }
-    @keyframes shine {
-      0%, 100% { background-position: 0% center; }
-      50% { background-position: 100% center; }
-    }
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.18); }
-    }
-    @keyframes bar {
-      0% { transform: scaleY(0.4); }
-      100% { transform: scaleY(1); }
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.85) translateY(10px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-    }
+    @keyframes twinkle { 0%, 100% { opacity: 0.1; transform: scale(0.8); } 50% { opacity: 0.9; transform: scale(1.3); } }
+    @keyframes shine { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
+    @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+    @keyframes bar { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(1); } }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn { 0% { opacity: 0; transform: scale(0.85); } 100% { opacity: 1; transform: scale(1); } }
   </style>
 </head>
 <body class="relative min-h-screen bg-gradient-to-b from-rose-50 via-white to-purple-50 overflow-x-hidden">
 
   <div id="root"></div>
 
-  <!-- React Script Code compilation using Babel -->
   <script type="text/babel">
     const { useState, useEffect, useRef, useMemo, useCallback } = React;
 
-    // Helper component to render Lucide Icons dynamically in HTML
     const Icon = ({ name, ...props }) => {
       const ref = useRef(null);
       useEffect(() => {
         if (ref.current && window.lucide) {
-          window.lucide.createIcons({
-            attrs: props,
-            nameAttr: 'data-lucide'
-          });
+          window.lucide.createIcons({ attrs: props, nameAttr: 'data-lucide' });
         }
-      }, [name, props]);
+      }, [name]);
       return <i ref={ref} data-lucide={name} className={props.className}></i>;
     };
 
@@ -95,212 +56,84 @@
         subtext: "Nama pesina convo full-a loop la replay pannitu irukken, oruye oru place la dhan land aaguren — na thappu pannitten, unaku athuku better treatment thevai irundhuchu. Konjam scroll pannu, unaku oru surprise vechirukken.",
       },
       memories: [
-        { title: "ethu ne ennaku muthala kudutha chocolate", caption: " etha na yarukum kudukama nane saptan dii.", image: "" },
+        { title: "ethu ne ennaku muthala kudutha chocolate", caption: "etha na yarukum kudukama nane saptan dii.", image: "" },
         { title: "ethu namba first msg pannapo", caption: "ethula la na unna vanga poonganu tha sollitu iruntha dii.", image: "" },
         { title: "ethu namba first photo", caption: "nee tha ella photo layum alazha thanu iruka natha sumaru.", image: "" },
         { title: "ethu na unnaku first msg la padunathu", caption: "nalla irukuma nu theriyama tha unnaku paduna cheloe.", image: "" },
       ],
       reasons:[
-        { 
-          title: "Unoda andha sirippu dii", 
-          detail: "Enna thaan prachana irundhalum, un sirippa ketta podhum... en ulagam motham silent aypoga, adhu mattum thaan ketkume. Adhu enaku evlo periya stress relief theriyuma?" 
-        },
-        { 
-          title: "Enaku mukkiyam nu thonradhu", 
-          detail: "Naa casual-a solra chinna chinna vishayatha kooda nee nyabagam vechu seiyum bodhu, 'Enakkum inge oru aal iruka' nu enna naanevalavo lucky-ah feel panna veikura da." 
-        },
-        { 
-          title: "Unoda alagana kobam", 
-          detail: "Nee kobapadra andha nodi... konjam stubborn-ah face-a vechurupa paathiya, adhu mela enaku kovame varadhu, innum innum love thaan jasthi aagum. Unaku mattum thaan andha right iruku." 
-        },
-        { 
-          title: "Unoda andha periya manasu", 
-          detail: "Naa thappu pannitu pesama irundha kooda, un ego-va pakama enakaaga vitu kuduthu varra paathiya... anga nikkura da nee. Un heart mathavanga yaarai vidavum romba perisu." 
-        },
-        { 
-          title: "Nee kooda irukura andha time", 
-          detail: "Namma summadea pesitu irundhalum சரி, heavy-ah prachana poitu irundhalum சரி... nee pakkathula irundha andha idame special-ah, secure-ah feel aagum. You make everything beautiful." 
-        },
-        { 
-          title: "Innum en mela irukra care...", 
-          detail: "Ivlo sandai potum innum kovatha marandhu indha lines-a nee padikura paathiya... unaku en mela irukra andha pure love-ku edhuvume eedu aagadhu da. I promise, I won't let you down again." 
-        }
+        { title: "Unoda andha sirippu dii", detail: "Enna thaan prachana irundhalum, un sirippa ketta podhum... en ulagam motham silent aypoga, adhu mattum thaan ketkume." },
+        { title: "Enaku mukkiyam nu thonradhu", detail: "Naa casual-a solra chinna chinna vishayatha kooda nee nyabagam vechu seiyum bodhu, romba lucky-ah feel panna veikura da." },
+        { title: "Unoda alagana kobam", detail: "Nee kobapadra andha nodi... konjam stubborn-ah face-a vechurupa paathiya, adhu mela enaku kovame varadhu, innum love jasthi aagum." },
+        { title: "Unoda andha periya manasu", detail: "Naa thappu pannitu pesama irundha kooda, un ego-va pakama enakaaga vitu kuduthu varra paathiya... un heart romba perisu dii." },
+        { title: "Nee kooda irukura andha time", detail: "Namma summadea pesitu irundhalum சரி, heavy prachana poitu irundhalum சரி... nee pakkathula irundha secure-ah feel aagum." },
+        { title: "Innum en mela irukra care...", detail: "Ivlo sandai potum innum kovatha marandhu indha lines-a nee padikura paathiya... un pure love-ku edhuvume eedu aagadhu da. I promise I won't let you down." }
       ],
-      song: {
-        title: "Namma Pattu",
-        artist: "correct time-la always play aagura andha oru pattu",
-        src: "", 
-      },
-      finalMessage: "Naan senja thappa marandhu thiruppi enna nambunadhuku unaku epdi thanks solradhune theriyala da. I promise, ini un manasu valikura maadhiri nadanthuka maaten, innum adhigamaa unna purinju care pannupen. Endha oru prachanayum ivlo dhooram poga vidama appove pesi mudichidren. I love you so much da Meera — ippove, and ini namma life la varra ovvoru nallalum.",
+      song: { title: "Namma Pattu", artist: "always play aagura andha oru pattu", src: "" },
+      finalMessage: "Naan senja thappa marandhu thiruppi enna nambunadhuku unaku epdi thanks solradhune theriyala da. I promise, ini un manasu valikura maadhiri nadanthuka maaten, innum adhigamaa unna purinju care pannupen. Endha oru prachanayum ivlo dhooram poga vidama appove pesi mudichidren. I love you so much da Udhaya.",
     };
 
     function AmbientBackground() {
-      const hearts = useMemo(() => Array.from({ length: 16 }).map((_, i) => ({
-        id: i, left: Math.random() * 100, size: 14 + Math.random() * 22, duration: 14 + Math.random() * 12, delay: Math.random() * 14, opacity: 0.15 + Math.random() * 0.25,
+      const hearts = useMemo(() => Array.from({ length: 12 }).map((_, i) => ({
+        id: i, left: Math.random() * 100, size: 14 + Math.random() * 20, duration: 12 + Math.random() * 10, delay: Math.random() * 10
       })), []);
-      const sparkles = useMemo(() => Array.from({ length: 22 }).map((_, i) => ({
-        id: i, left: Math.random() * 100, top: Math.random() * 100, size: 3 + Math.random() * 5, duration: 3 + Math.random() * 4, delay: Math.random() * 5,
-      })), []);
-
-      const [tilt, setTilt] = useState({ x: 0, y: 0 });
-      useEffect(() => {
-        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-        if (mq.matches) return;
-        let raf = null;
-        const onMove = (e) => {
-          if (raf) return;
-          raf = requestAnimationFrame(() => {
-            setTilt({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-            raf = null;
-          });
-        };
-        window.addEventListener("mousemove", onMove);
-        return () => window.removeEventListener("mousemove", onMove);
-      }, []);
-
       return (
         <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-          <div className="absolute -top-32 -left-24 w-[32rem] h-[32rem] rounded-full bg-rose-200/40 blur-3xl transition-transform duration-700 ease-out" style={{ transform: `translate(${tilt.x * 18}px, ${tilt.y * 18}px)` }} />
-          <div className="absolute top-1/3 -right-24 w-[28rem] h-[28rem] rounded-full bg-purple-200/30 blur-3xl transition-transform duration-700 ease-out" style={{ transform: `translate(${tilt.x * -22}px, ${tilt.y * -14}px)` }} />
-          <div className="absolute bottom-0 left-1/4 w-[26rem] h-[26rem] rounded-full bg-amber-100/40 blur-3xl transition-transform duration-700 ease-out" style={{ transform: `translate(${tilt.x * 14}px, ${tilt.y * -18}px)` }} />
-
+          <div className="absolute -top-32 -left-24 w-96 h-96 rounded-full bg-rose-200/30 blur-3xl" />
+          <div className="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-purple-200/20 blur-3xl" />
           {hearts.map((h) => (
-            <Icon name="heart" key={h.id} className="absolute text-rose-300 fill-rose-200" style={{ left: `${h.left}%`, bottom: "-10%", width: h.size, height: h.size, opacity: h.opacity, animation: `floatUp ${h.duration}s ease-in ${h.delay}s infinite` }} />
-          ))}
-          {sparkles.map((s) => (
-            <span key={s.id} className="absolute rounded-full bg-amber-200" style={{ left: `${s.left}%`, top: `${s.top}%`, width: s.size, height: s.size, animation: `twinkle ${s.duration}s ease-in-out ${s.delay}s infinite` }} />
+            <Icon name="heart" key={h.id} className="absolute text-rose-300 fill-rose-200" style={{ left: `${h.left}%`, bottom: "-10%", width: h.size, height: h.size, opacity: 0.25, animation: `floatUp ${h.duration}s ease-in ${h.delay}s infinite` }} />
           ))}
         </div>
       );
     }
 
-    function Reveal({ children, delay = 0, className = "", y = 28 }) {
-      const ref = useRef(null);
-      const [visible, setVisible] = useState(false);
-
-      useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          setVisible(true);
-          return;
-        }
-        const io = new IntersectionObserver(([entry]) => {
-          if (entry.isIntersecting) { setVisible(true); io.unobserve(el); }
-        }, { threshold: 0.18, rootMargin: "0px 0px -40px 0px" });
-        io.observe(el);
-        return () => io.disconnect();
-      }, []);
-
+    function Section({ id, eyebrow, title, children }) {
       return (
-        <div ref={ref} className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0"} ${className}`} style={{ transitionDelay: `${delay}ms`, transform: visible ? "translateY(0)" : `translateY(${y}px)` }}>
+        <section id={id} className="relative z-10 py-16 px-6 max-w-5xl mx-auto">
+          {eyebrow && <p className="text-center text-xs tracking-[0.2em] uppercase text-rose-400 font-medium mb-2">{eyebrow}</p>}
+          {title && <h2 className="text-center text-3xl md:text-4xl mb-10 text-rose-950 font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{title}</h2>}
           {children}
-        </div>
-      );
-    }
-
-    function Section({ id, eyebrow, title, children, className = "" }) {
-      return (
-        <section id={id} className={`relative z-10 py-20 md:py-28 px-6 ${className}`}>
-          <div className="max-w-5xl mx-auto">
-            <Reveal>
-              {eyebrow && <p className="text-center text-xs md:text-sm tracking-[0.25em] uppercase text-rose-400 font-medium mb-3">{eyebrow}</p>}
-              {title && <h2 className="text-center text-3xl md:text-5xl mb-14 text-rose-950" style={{ fontFamily: "'Playfair Display', serif" }}>{title}</h2>}
-            </Reveal>
-            {children}
-          </div>
         </section>
       );
     }
 
     function Hero() {
       const [mounted, setMounted] = useState(false);
-      useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
-      const scrollToNext = () => { document.getElementById("memories")?.scrollIntoView({ behavior: "smooth" }); };
-      const step = (d) => `transition-all duration-700 ease-out ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
-
+      useEffect(() => { setMounted(true); }, []);
       return (
-        <section className="relative z-10 min-h-[92vh] flex flex-col items-center justify-center text-center px-6">
-          <p className={`text-xs md:text-sm tracking-[0.3em] uppercase text-rose-400 font-medium mb-6 ${step()}`} style={{ transitionDelay: "0ms" }}>{CONFIG.hero.eyebrow}</p>
-          <h1 className={`text-4xl sm:text-5xl md:text-7xl leading-tight text-rose-950 max-w-4xl ${step()}`} style={{ fontFamily: "'Playfair Display', serif", transitionDelay: "120ms" }}>
-            {CONFIG.hero.headlinePrefix}{" "}
-            <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-400 to-amber-400 bg-[length:200%_auto] animate-[shine_6s_ease-in-out_infinite]">
-              {CONFIG.herName}
-            </span><br />{CONFIG.hero.headlineSuffix}
+        <section className="relative z-10 min-h-[90vh] flex flex-col items-center justify-center text-center px-6 transition-all duration-700">
+          <p className="text-xs tracking-[0.3em] uppercase text-rose-400 font-medium mb-4">{CONFIG.hero.eyebrow}</p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl leading-tight text-rose-950 max-w-3xl font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {CONFIG.hero.headlinePrefix} <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-400 bg-[length:200%_auto] animate-[shine_5s_infinite]">{CONFIG.herName}</span><br />{CONFIG.hero.headlineSuffix}
           </h1>
-          <p className={`mt-6 text-base md:text-lg text-rose-900/70 max-w-xl leading-relaxed ${step()}`} style={{ transitionDelay: "260ms" }}>{CONFIG.hero.subtext}</p>
-          <div className={`mt-10 flex items-center gap-2 text-rose-400 ${step()}`} style={{ transitionDelay: "380ms" }}>
+          <p className="mt-6 text-sm sm:text-base text-rose-900/70 max-w-xl leading-relaxed">{CONFIG.hero.subtext}</p>
+          <div className="mt-8 flex items-center gap-2 text-rose-400">
             <Icon name="heart" className="w-4 h-4 fill-rose-300 animate-pulse" />
             <span className="text-xs tracking-widest uppercase">from {CONFIG.yourName} kooda love</span>
             <Icon name="heart" className="w-4 h-4 fill-rose-300 animate-pulse" />
           </div>
-          <button onClick={scrollToNext} aria-label="Scroll to memories" className={`absolute bottom-8 flex flex-col items-center gap-1 text-rose-400 hover:text-rose-500 hover:gap-2 transition-all animate-bounce ${mounted ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "500ms" }}>
-            <span className="text-[10px] tracking-widest uppercase">scroll pannu</span>
-            <Icon name="chevron-down" className="w-5 h-5" />
-          </button>
         </section>
       );
     }
 
     function MemoryCard({ memory }) {
       return (
-        <div className="snap-center shrink-0 w-[80vw] sm:w-[22rem] mx-3 first:ml-6 last:mr-6">
-          <div className="group rounded-3xl overflow-hidden border border-white/60 bg-white/40 backdrop-blur-xl shadow-[0_8px_30px_rgba(200,120,140,0.15)] h-full transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_18px_45px_rgba(200,120,140,0.28)]">
-            <div className="h-56 relative overflow-hidden">
-              {memory.image ? (
-                <img src={memory.image} alt={memory.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-rose-200 via-pink-100 to-amber-100 flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
-                  <Icon name="camera" className="w-10 h-10 text-rose-400/70" strokeWidth={1.5} />
-                </div>
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-rose-950/20 to-transparent" />
-            </div>
-            <div className="p-5">
-              <h3 className="text-lg text-rose-950 font-medium" style={{ fontFamily: "'Playfair Display', serif" }}>{memory.title}</h3>
-              <p className="mt-2 text-sm text-rose-900/70 leading-relaxed">{memory.caption}</p>
-            </div>
+        <div className="snap-center shrink-0 w-[75vw] sm:w-80 mx-2 bg-white/40 border border-white/60 backdrop-blur-md rounded-2xl shadow-sm p-4">
+          <div className="h-44 bg-gradient-to-br from-rose-200 to-amber-100 rounded-xl flex items-center justify-center mb-4">
+            <Icon name="camera" className="w-8 h-8 text-rose-400/60" />
           </div>
+          <h3 className="text-base text-rose-950 font-medium font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{memory.title}</h3>
+          <p className="mt-1 text-xs text-rose-900/70 leading-relaxed">{memory.caption}</p>
         </div>
       );
     }
 
     function MemoriesCarousel() {
-      const trackRef = useRef(null);
-      const [active, setActive] = useState(0);
-      const scrollByCard = (dir) => {
-        const track = trackRef.current; if (!track) return;
-        const cardWidth = track.firstChild?.offsetWidth || 300;
-        track.scrollBy({ left: dir * (cardWidth + 24), behavior: "smooth" });
-      };
-      const handleScroll = useCallback(() => {
-        const track = trackRef.current; if (!track) return;
-        const cardWidth = track.firstChild?.offsetWidth || 300;
-        const idx = Math.round(track.scrollLeft / (cardWidth + 24));
-        setActive(Math.min(Math.max(idx, 0), CONFIG.memories.length - 1));
-      }, []);
-
       return (
-        <Section id="memories" eyebrow="namma happy moments" title="Namma Konjam Memories">
-          <div className="relative">
-            <div ref={trackRef} onScroll={handleScroll} className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {CONFIG.memories.map((m, i) => (
-                <Reveal key={i} delay={i * 90} y={16} className="shrink-0">
-                  <MemoryCard memory={m} />
-                </Reveal>
-              ))}
-            </div>
-            <button onClick={() => scrollByCard(-1)} aria-label="Previous memory" className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-rose-200 items-center justify-center shadow-lg hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300">
-              <Icon name="chevron-left" className="w-5 h-5 text-rose-500" />
-            </button>
-            <button onClick={() => scrollByCard(1)} aria-label="Next memory" className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/70 backdrop-blur border border-rose-200 items-center justify-center shadow-lg hover:bg-white hover:scale-110 active:scale-95 transition-all duration-300">
-              <Icon name="chevron-right" className="w-5 h-5 text-rose-500" />
-            </button>
-          </div>
-          <div className="flex justify-center gap-2 mt-6">
-            {CONFIG.memories.map((_, i) => (
-              <span key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-rose-400" : "w-1.5 bg-rose-200"}`} />
-            ))}
+        <Section id="memories" eyebrow="happy moments" title="Namma Konjam Memories">
+          <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {CONFIG.memories.map((m, i) => <MemoryCard key={i} memory={m} />)}
           </div>
         </Section>
       );
@@ -309,31 +142,27 @@
     function FlipCard({ title, detail, index }) {
       const [flipped, setFlipped] = useState(false);
       return (
-        <button onClick={() => setFlipped((f) => !f)} className="group [perspective:1200px] text-left w-full h-48 transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]" aria-label={`Reveal reason: ${title}`}>
-          <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)]" style={{ transform: flipped ? "rotateY(180deg)" : undefined }}>
-            <div className="absolute inset-0 [backface-visibility:hidden] rounded-2xl bg-gradient-to-br from-white/80 to-rose-50/80 border border-rose-100 shadow-md flex flex-col items-center justify-center gap-3 p-5">
-              <Icon name="heart" className="w-6 h-6 text-rose-300 fill-rose-200 animate-[breathe_2.8s_ease-in-out_infinite]" />
-              <p className="text-rose-900/60 text-xs tracking-widest uppercase">reason 0{index + 1}</p>
-              <p className="text-center text-lg text-rose-950" style={{ fontFamily: "'Playfair Display', serif" }}>{title}</p>
+        <button onClick={() => setFlipped(!flipped)} className="text-left w-full h-40 bg-white/60 border border-rose-100 rounded-xl shadow-sm p-5 relative overflow-hidden transition-all duration-300 hover:scale-[1.02]">
+          {!flipped ? (
+            <div className="flex flex-col h-full justify-between">
+              <Icon name="heart" className="w-5 h-5 text-rose-300 fill-rose-200 animate-[breathe_3s_infinite]" />
+              <div>
+                <p className="text-[10px] text-rose-400 uppercase tracking-widest">Reason 0{index + 1}</p>
+                <h3 className="text-base text-rose-950 font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{title}</h3>
+              </div>
             </div>
-            <div className="absolute inset-0 [backface-visibility:hidden] rounded-2xl bg-gradient-to-br from-rose-400 to-pink-400 text-white shadow-md flex items-center justify-center p-6" style={{ transform: "rotateY(180deg)" }}>
-              <p className="text-center text-sm leading-relaxed">{detail}</p>
-            </div>
-          </div>
+          ) : (
+            <div className="flex items-center h-full text-xs text-rose-900/80 leading-relaxed animate-[fadeIn_0.3s]">{detail}</div>
+          )}
         </button>
       );
     }
 
     function WhySpecialGrid() {
       return (
-        <Section eyebrow="konjam reminders" title="Nee Enakku ஏன் Special">
-          <p className="text-center text-rose-900/60 text-sm -mt-8 mb-10">(card-a tap pannu, illa hover pannu, flip aagum)</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CONFIG.reasons.map((r, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <FlipCard title={r.title} detail={r.detail} index={i} />
-              </Reveal>
-            ))}
+        <Section eyebrow="reminders" title="Nee Enakku ஏன் Special">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {CONFIG.reasons.map((r, i) => <FlipCard key={i} title={r.title} detail={r.detail} index={i} />)}
           </div>
         </Section>
       );
@@ -343,16 +172,79 @@
       const audioRef = useRef(null);
       const [playing, setPlaying] = useState(false);
       const toggle = () => {
-        const audio = audioRef.current; if (!audio) return;
-        if (playing) { audio.pause(); } else { audio.play().catch(() => {}); }
-        setPlaying((p) => !p);
+        if (!audioRef.current) return;
+        playing ? audioRef.current.pause() : audioRef.current.play().catch(()=>{});
+        setPlaying(!playing);
       };
-      const bars = useMemo(() => Array.from({ length: 24 }, () => 0.3 + Math.random() * 0.7), []);
+      return (
+        <Section eyebrow="play pattu" title="Unaku Oru Soft Pattu">
+          <div className="max-w-md mx-auto bg-white/50 border border-white/70 backdrop-blur-md rounded-2xl p-6 text-center shadow-sm">
+            <div className="w-16 h-16 mx-auto bg-gradient-to-tr from-rose-400 to-amber-200 rounded-full flex items-center justify-center mb-3 shadow" style={{ animation: playing ? 'spin 6s linear infinite' : 'none' }}>
+              <Icon name="volume-2" className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-base text-rose-950 font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>{CONFIG.song.title}</p>
+            <p className="text-xs text-rose-900/50 mb-4">{CONFIG.song.artist}</p>
+            <button onClick={toggle} className="w-12 h-12 rounded-full bg-rose-500 text-white flex items-center justify-center mx-auto shadow shadow-rose-300">
+              {playing ? <Icon name="pause" className="w-5 h-5" /> : <Icon name="play" className="w-5 h-5 ml-0.5" />}
+            </button>
+            {CONFIG.song.src ? <audio ref={audioRef} src={CONFIG.song.src} onEnded={() => setPlaying(false)} /> : <p className="text-[10px] text-rose-900/40 mt-3">(Add mp3 link in CONFIG to play)</p>}
+          </div>
+        </Section>
+      );
+    }
+
+    function ForgiveMe() {
+      const containerRef = useRef(null);
+      const [noPos, setNoPos] = useState({ x: 0, y: 0 });
+      const [dodges, setDodges] = useState(0);
+      const [accepted, setAccepted] = useState(false);
+
+      const dodge = () => {
+        if (!containerRef.current) return;
+        const box = containerRef.current;
+        const x = (Math.random() - 0.5) * (box.offsetWidth - 100);
+        const y = (Math.random() - 0.5) * (box.offsetHeight - 60);
+        setNoPos({ x, y }); setDodges(dodges + 1);
+      };
+
+      const noLabel = dodges === 0 ? "Illa" : dodges < 3 ? "Wait, illa da" : dodges < 6 ? "En pinnadi வராதே 😅" : "Sari, Yes click pannu";
 
       return (
-        <Section eyebrow="play pannu" title="Unaku Oru Soft Pattu">
-          <Reveal>
-            <div className="max-w-lg mx-auto relative">
-              <div className={`absolute inset-0 rounded-[2rem] bg-rose-300/30 blur-2xl transition-opacity duration-700 ${playing ? "opacity-100 animate-pulse" : "opacity-40"}`} />
-              <div className="relative rounded-[2rem] bg-white/50 backdrop-blur-xl border border-white/70 shadow-xl p-8 flex flex-col items-center">
-                <div className={`w-24 h-24 rounded-full bg-gradient-to-br from-rose-300 to-amber-200 flex items-center justify-center shadow-lg mb-5 transition-transform duration-700 ${playing ? "                      
+        <Section eyebrow="oru kelvi" title="Enna Forgive Pannuviya?">
+          <div ref={containerRef} className="relative h-48 bg-white/40 border border-white/60 backdrop-blur-md rounded-2xl flex items-center justify-center gap-4 overflow-hidden shadow-sm">
+            <button onClick={() => setAccepted(true)} className="px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-medium shadow-md animate-[breathe_2.5s_infinite]">Aama, manasari manichitten 💗</button>
+            <button onMouseEnter={dodge} onClick={dodge} style={{ transform: `translate(${noPos.x}px, ${noPos.y}px)` }} className="px-4 py-2.5 rounded-full bg-white/80 border border-rose-200 text-rose-500 text-xs font-medium shadow transition-transform duration-200 ease-out whitespace-nowrap">{noLabel}</button>
+          </div>
+          {accepted && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-rose-950/20 backdrop-blur-sm animate-[fadeIn_0.3s]">
+              <div className="max-w-sm w-full bg-white/95 border shadow-xl rounded-2xl p-6 text-center animate-[popIn_0.4s]">
+                <Icon name="sparkles" className="w-7 h-7 text-amber-400 mx-auto mb-3" />
+                <h3 className="text-xl text-rose-950 mb-2 font-serif" style={{ fontFamily: "'Playfair Display', serif" }}>Thanks da, {CONFIG.herName}.</h3>
+                <p className="text-rose-900/70 text-xs leading-relaxed">{CONFIG.finalMessage}</p>
+                <button onClick={() => setAccepted(false)} className="mt-4 text-xs font-medium text-rose-500 underline">Close</button>
+              </div>
+            </div>
+          )}
+        </Section>
+      );
+    }
+
+    function App() {
+      return (
+        <React.Fragment>
+          <AmbientBackground />
+          <main className="relative z-10 pb-10">
+            <Hero />
+            <MemoriesCarousel />
+            <WhySpecialGrid />
+            <MelodyPlayer />
+            <ForgiveMe />
+          </main>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
